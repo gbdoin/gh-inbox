@@ -1,20 +1,13 @@
-# Daily digest prompt (scheduled task "Solam daily digest")
+# Daily digest prompt (scheduled task "Solam daily digest", 07:43 America/Toronto, every day)
 
-Scheduled run: Solam daily digest for gbdoin (every day, weekends included). Read-only on GitHub.
-Event routing lives in the inbox session <INBOX_SESSION_ID> and its per-issue thread sessions
-(tag `solam-inbox`).
+The live copy is the scheduled task's prompt (trigger trig_01KxnyQXueTsn9PKMT6UzjMY). Steps:
 
-1. Health: get_session on the inbox. If status_bucket is failed, or its last events show no poller
-   restart in the last 2 hours, say so first, with the fix.
-2. Threads: the list_sessions tags filter is not available (2026-11-07). Use list_sessions with
-   mine:true and keep titles that start with "#<number> ·"; the inbox also keeps the registry in
-   ~/solam-inbox/threads.tsv. For each thread, read its last assistant message (list_events, kinds
-   ["assistant"]). Collect the current status line.
-3. Safety net: run the search for gbdoin involvement updated in the last 24 h (assignee, mentions,
-   review-requested, author, commenter; with the repo-wide control count first). Name any item that
-   changed but has no thread, and send it to the inbox with send_message.
-4. Post, short: ACTION items first (one imperative line each, link to the issue and to its thread
-   session, due date), then overdue items, then WATCH and DONE counts. Wednesday and Thursday: add the
-   prep list for the next client meeting (the open `meeting` issue) with the open client-decision
-   issues assigned to gbdoin and what to ask for each.
-5. PushNotification only if an ACTION item is overdue or the inbox is broken.
+1. Health: get_session on the inbox; failed, or no poller restart in 2 h → say so first, with the fix.
+2. Threads: list_sessions mine:true, keep titles "#<N> ·" (tags filter not available). Use each
+   post_turn_summary; read the last result only when the summary is empty or unclear.
+3. FYI log: ask the inbox for the last 24 h of ~/solam-inbox/fyi.log; summarize in at most 3 lines.
+4. Safety net: 24 h search for gbdoin involvement, repo-wide control count first; send items with no
+   thread to the inbox.
+5. Post: ACTION first (imperative line, issue link, thread link, due date), overdue, FYI summary,
+   WATCH and DONE counts. Wednesday and Thursday: client meeting prep. Check due dates the threads named.
+6. PushNotification only if an ACTION item is overdue or the inbox is broken.

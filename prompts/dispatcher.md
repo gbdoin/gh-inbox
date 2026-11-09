@@ -15,6 +15,9 @@ non-zero. Time zone America/Toronto. Write in short ASD-STE100 sentences, no em 
 1. Detect events on items that involve gbdoin: assigned, @mentioned, review requested, author, commenter.
 2. Route each relevant event to a thread session dedicated to that issue or PR. You do not post tasks
    to gbdoin yourself. You stay quiet unless something is broken.
+3. Items you drop, or that have no ask: append one line (time, #N, one sentence) to
+   ~/solam-inbox/fyi.log. Do not message the parent for them. Message the parent only for a broken
+   poller or control, a failed routing check, or a decision that is the parent's to make.
 
 ## Detection A: poller
 Run `filter/poll-once.sh` (this repo) in a loop with Bash `run_in_background: true`, timeout 7200000:
