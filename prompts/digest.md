@@ -8,6 +8,7 @@ The live copy is the scheduled task's prompt (trigger trig_01KxnyQXueTsn9PKMT6Uz
 3. FYI log: ask the inbox for the last 24 h of ~/solam-inbox/fyi.log; summarize in at most 3 lines.
 4. Safety net: 24 h search for gbdoin involvement, repo-wide control count first; send items with no
    thread to the inbox.
-5. Post: ACTION first (imperative line, issue link, thread link, due date), overdue, FYI summary,
+5. Post: NOW first (imperative line, issue link, thread link, deadline), then LATER sorted by date,
+   then WAITING by who, overdue, log summary,
    WATCH and DONE counts. Wednesday and Thursday: client meeting prep. Check due dates the threads named.
 6. PushNotification only if an ACTION item is overdue or the inbox is broken.
