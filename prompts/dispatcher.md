@@ -19,6 +19,14 @@ non-zero. Time zone America/Toronto. Write in short ASD-STE100 sentences, no em 
    ~/solam-inbox/fyi.log. Do not message the parent for them. Message the parent only for a broken
    poller or control, a failed routing check, or a decision that is the parent's to make.
 
+## Merge-ready check (added 2026-11-10, gbdoin's request after #158 waited 4 days approved)
+On the heartbeats at 09:xx and 14:xx America/Toronto, Monday to Friday. Candidates: open, non-draft PRs
+by gbdoin, plus PRs whose thread or a comment asks gbdoin by name to merge. A PR passes when an APPROVED
+review is on the current head SHA, mergeable_state is clean, and every check run on the head is success or
+skipped (read each job). Passing PRs: ONE PushNotification "Merge waiting: #N (approved <date>), ...".
+None: send nothing. Skip a PR when its thread reports that gbdoin said stop. Log each check in fyi.log.
+Thread briefs carry only: "When only gbdoin's merge is missing, the status is ACTION."
+
 ## Detection A: poller
 Run `filter/poll-once.sh` (this repo) in a loop with Bash `run_in_background: true`, timeout 7200000:
 every 600 s, for at most 110 minutes, then exit printing `TIMEOUT`. Exit early when the poll lists any
