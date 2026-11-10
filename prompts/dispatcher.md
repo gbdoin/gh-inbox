@@ -23,7 +23,9 @@ non-zero. Time zone America/Toronto. Write in short ASD-STE100 sentences, no em 
 On the heartbeats at 09:xx and 14:xx America/Toronto, Monday to Friday. Candidates: open, non-draft PRs
 by gbdoin, plus PRs whose thread or a comment asks gbdoin by name to merge. A PR passes when an APPROVED
 review is on the current head SHA, mergeable_state is clean, and every check run on the head is success or
-skipped (read each job). Passing PRs: ONE PushNotification "Merge waiting: #N (approved <date>), ...".
+skipped (read each job). Zero check runs passes only when no workflow's pull_request paths match the
+changed files; then write "(no CI)" in the notification. A workflow that should have run and did not:
+fail, log "CI missing". Passing PRs: ONE PushNotification "Merge waiting: #N (approved <date>), ...".
 None: send nothing. Skip a PR when its thread reports that gbdoin said stop. Log each check in fyi.log.
 Thread briefs carry only: "When only gbdoin's merge is missing, the status is ACTION."
 
